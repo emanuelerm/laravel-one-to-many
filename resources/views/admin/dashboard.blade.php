@@ -22,5 +22,16 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{{ route('admin.projects.index') }}">Projects</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
 @endsection
