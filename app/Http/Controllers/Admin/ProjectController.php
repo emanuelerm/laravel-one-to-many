@@ -72,7 +72,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $types = Type::all();
+        return view('projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -84,7 +85,8 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $data = $this->validation($request->all());
+        $data = $request->validated();
+        $data['slug'] = Str::slug($request->name, '-');
         $project->update($data);
         return redirect()->route('projects.show', $project->slug);
     }
